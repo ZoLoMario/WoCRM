@@ -1,14 +1,20 @@
 {
   "name": "wocrm",
-  "version": "1.0.0",
-  "description": "quản lí khách hàng wo",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "test": "nodemon -L ./bin/www"
   },
-  "keywords": [
-    "crm"
-  ],
-  "author": "dangkhoi",
-  "license": "ISC"
+  "dependencies": {
+    "angular": "^1.8.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.6.2",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.12.2",
+    "morgan": "~1.9.1"
+  }
 }

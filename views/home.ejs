@@ -1,0 +1,30 @@
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/page.css' />
+      </head>
+
+<body id="page-top" class="sidebar-toggled">
+
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+            <%- include('layout/slidebar'); -%>
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <%- include('layout/nav'); -%>
+                </nav>
+                <div class="container-fluid">
+                    <%- include('layout/page'); -%>
+                </div>
+            </div>
+            <footer class="sticky-footer bg-white">
+            <%- include('layout/footer'); -%>
+            </footer>
+        </div>
+
+    </div>
+</body>
+</html>
