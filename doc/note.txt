@@ -3,3 +3,43 @@ Sử dụng công nghệ nào không quan trọng quan trọng là nó hiệu qu
 
 wotech@wotech.vn
 wotech
+
+Các lớp xử lí dữ liệu trong WoCRM
+mongodb => nodejs => expressjs (cung cấp API) => reactjs => website
+reactjs nhận dữ liệu và đẩy đến máy khách
+ExpressJs tạo API để sử dụng lấy Database
+NodeJS sẽ làm nền tảng chạy
+mongodb sửu dụng để lưu dữ liệu
+
+Mô tả ứng dụng vẫn chưa cụ thểnhóm các tính năng chính và các phân vùng, các hoạt động chính
+
+Liệt kế các tính năng và dùng hết xong áp dụng các tính năng vào trong đó sau đó thay đổi và nhóm sau
+
+Chạy 2 server tại 2 khu vực khác nhau 1 cái là api và 1 cái là webapp
+https://bezkoder.com/react-node-express-mongodb-mern-stack/
+
+Stach ccong nghệ định dùng nhwung không ó tác dụng nhiều
+CentoOS mất tài nguyên máy và vấn đề chia sẻ file
+React JS gặp vấn đề khi quá nhiều bước trung gian
+
+Stack cong nghe đang dùng
+centos-release-7-8.2003.0.el7.centos.x86_64
+node v14.13.0
+npm 6.14.8
+mongod 
+db version v4.4.1
+Build Info: {
+    "version": "4.4.1",
+    "gitVersion": "ad91a93a5a31e175f5cbf8c69561e788bbc55ce1",
+    "openSSLVersion": "OpenSSL 1.0.1e-fips 11 Feb 2013",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "rhel70",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+
+Git
+Visual studio
