@@ -89,17 +89,18 @@ var cusSchema = new Schema({
 var Cus = mongoose.model('Cus', cusSchema);
 CtrlData.addCustomer = async (user) => {
     const emailUser = await User.findOne({ email: user.phone });
+    console.log("truoc lúc trả vè");
     if (emailUser) {
-      return {error: "04"};
-      console.log({error: "04"});
+      console.log({code: "04"});
+      return {code: "04"};
     } else {
       // Saving a New User
       var cusCollections = new Cus(user);
-      await cusCollections.save(function (err, user) {
+      var cus = await cusCollections.save(function (err, user) {
         if (err) return console.error(err);
-        console.log({'user':user});
-        return {'user':user};
+        console.log("đã chạy" + {code:"05",'user':user});
         });
+      return {code:"05",'user':cus};
     }
 };
 

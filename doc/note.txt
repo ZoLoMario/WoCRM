@@ -43,3 +43,5 @@ Build Info: {
 
 Git
 Visual studio
+
+Vấn đề thuwuc thi trước sau khi thêm người dùng

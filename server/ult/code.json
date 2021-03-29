@@ -1,4 +1,6 @@
 [{ "01": "Người dùng đã tồn tại"},
 { "02": "Sai mật khẩu"},
-{ "03": "Đăng nhập Thành công"}
+{ "03": "Đăng nhập Thành công"},
+{ "04": "Khách hàng đã tồn tại"},
+{ "05": "Đã thêm khách hàng"}
 ]

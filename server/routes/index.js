@@ -19,8 +19,19 @@ router.post('/', function(req, res, next) {
   );
 });
 
-router.post('/addcus.html',(req,res,next)=>{
+router.post('/addcus.html', async (req,res,next)=>{
   console.log(req.body);
+  var result = await CtrlData.addCustomer(req.body)
+    console.log("123 " + result);
+    if(result == undefined ){
+       console.log("không có kết quả phùi hợp")
+    }else{
+    if(result.code == "05"){
+      res.render('home', {page: 'listcustomer'});
+    } else {
+      res.render('index', { title: 'WoTech CRM' });   
+  }
+}
 });
 
 router.get('/signup', function(req, res, next) {
@@ -29,6 +40,9 @@ router.get('/signup', function(req, res, next) {
 router.get('/addcus.html', function(req, res, next) {
   res.render('home', {page: 'addcus'});
 });
+router.get('/listcustomer.html', function(req, res, next) {
+  res.render('home', {page: 'listcustomer'});
+})
 router.get('/forgot-password.html', function(req, res, next) {
   res.render('forgotpass', { title: 'WoTech CRM' });
 });
