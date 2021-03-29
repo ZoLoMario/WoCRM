@@ -74,6 +74,33 @@ CtrlData.authUser = async (user) => {
           }
       }
 }
-//Quản lí người dùng
+//Quản lí Khách hàng
+var cusSchema = new Schema({
+    name:  String,
+    birth: Date,
+    address: String,
+    address2: String,
+    addressbrand: String,
+    email:   String,
+    phone: String,
+    facebook: String,
+    zalo: String,
+});
+var Cus = mongoose.model('Cus', cusSchema);
+CtrlData.addCustomer = async (user) => {
+    const emailUser = await User.findOne({ email: user.phone });
+    if (emailUser) {
+      return {error: "04"};
+      console.log({error: "04"});
+    } else {
+      // Saving a New User
+      var cusCollections = new Cus(user);
+      await cusCollections.save(function (err, user) {
+        if (err) return console.error(err);
+        console.log({'user':user});
+        return {'user':user};
+        });
+    }
+};
 
 module.exports = CtrlData;
