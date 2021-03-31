@@ -2,7 +2,8 @@ var express = require('express');
 const CtrlData = require('../src/database');
 const multer = require('multer');
 var router = express.Router();
-const xlsxFile = require('read-excel-file/node');
+// const xlsxFile = require('read-excel-file/node');
+var xlsx = require('node-xlsx').default;
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads')
@@ -13,7 +14,6 @@ var storage = multer.diskStorage({
 });
  
 var upload = multer({ storage: storage });
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -56,11 +56,14 @@ router.post('/other.html',  upload.single('myFile') , (req,res,next)=>{
     return next(error)
     }
     if(file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
-     xlsxFile(file.path).then((rows) => {
-      console.log(rows);
-      console.table(rows);
-    })}
-      res.render('home', {page: 'listcustomer'});
+      const workSheetsFromFile = xlsx.parse(file.path);
+    //  xlsxFile(file.path).then((rows) => {
+    //   console.log(rows);
+    //   console.table(rows);
+    // })
+    res.send(workSheetsFromFile);
+   }
+      //res.render('home', {page: 'listcustomer'});
     }
   );
 router.get('/signup', function(req, res, next) {
