@@ -46,6 +46,8 @@ router.post('/addcus.html', async (req,res,next)=>{
   }
 }
 });
+
+var listData;
 router.post('/other.html',  upload.single('myFile') , (req,res,next)=>{
   console.log(req.body);
   const file = req.file;
@@ -61,11 +63,19 @@ router.post('/other.html',  upload.single('myFile') , (req,res,next)=>{
     //   console.log(rows);
     //   console.table(rows);
     // })
-    res.send(workSheetsFromFile);
+    //res.send( workSheetsFromFile[0].data)
+    res.render('home', {page:'select', excelData : workSheetsFromFile});
    }
-      //res.render('home', {page: 'listcustomer'});
+      var listData = workSheetsFromFile;
     }
   );
+
+router.post('/other/selecdata' , (req,res,next)=>{
+  console.log(req.body);
+  });
+
+
+
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'WoTech CRM' });
 });
