@@ -31,55 +31,55 @@
                         <% } %>
                </div></div></div>
             </div>
-            <form action="/other/selecdata" enctype="multipart/form-data" method="POST">
+            <form action="/other/selecdata" method="POST">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Sheet chính</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Số Sheet">
+                  <label for="i4">Sheet chính</label>
+                  <input type="number" name="sheet" class="form-control" id="i4" placeholder="Số Sheet">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Dòng lấy</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Thứ tự dòng">
+                  <label for="inp4">Dòng lấy</label>
+                  <input type="number" name="header" class="form-control" id="inp4" placeholder="Thứ tự dòng">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="a1">Cột tên số</label>
-                  <input type="email" class="form-control" id="a1" placeholder="Số ">
+                  <input type="number" name="a1" class="form-control" id="a1" placeholder="Số ">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="a4">Ngày sinh</label>
-                  <input type="password" class="form-control" id="a2"  placeholder="Số">
+                  <input type="number" name="a2" class="form-control" id="a2"  placeholder="Số">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="a3">Chi nhánh</label>
-                  <input type="password" class="form-control" id="a3"  placeholder="Số">
+                  <input type="number" name="a3" class="form-control" id="a3"  placeholder="Số">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="a4">Địa chỉ 1</label>
-                  <input type="password" class="form-control"  id="a4"  placeholder="Số">
+                  <input type="number" name="a4" class="form-control"  id="a4"  placeholder="Số">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="a5">Địa chỉ 2</label>
-                  <input type="password" class="form-control"  id="a5"  placeholder="Số">
+                  <input type="number" name="a5" class="form-control"  id="a5"  placeholder="Số">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="b1">Email</label>
-                  <input type="email" class="form-control" id="b1" placeholder="Số ">
+                  <input type="number" class="form-control" name="a6" id="b1" placeholder="Số ">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="b2">Phone</label>
-                  <input type="password" class="form-control" id="b2" placeholder="Số">
+                  <input type="number" class="form-control" name="a7" id="b2" placeholder="Số">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="b3">Facebook</label>
-                  <input type="password" class="form-control" id="b3" placeholder="Số">
+                  <input type="number" class="form-control" id="b3" placeholder="Số">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="b4">Zalo</label>
-                  <input type="password" class="form-control" id="b4" placeholder="Số">
+                  <input type="number" class="form-control" id="b4" placeholder="Số">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Xong</button>

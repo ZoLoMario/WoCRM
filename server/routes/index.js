@@ -59,21 +59,32 @@ router.post('/other.html',  upload.single('myFile') , (req,res,next)=>{
     }
     if(file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
       const workSheetsFromFile = xlsx.parse(file.path);
-    //  xlsxFile(file.path).then((rows) => {
-    //   console.log(rows);
-    //   console.table(rows);
-    // })
-    //res.send( workSheetsFromFile[0].data)
+      listData = workSheetsFromFile;
+      console.log(listData[0].name);
     res.render('home', {page:'select', excelData : workSheetsFromFile});
    }
-      var listData = workSheetsFromFile;
+      
     }
   );
-
 router.post('/other/selecdata' , (req,res,next)=>{
   console.log(req.body);
-  });
-
+  var listcustomer = [];
+  console.log(listData[0].data.length);
+  for(var k=0; k < listData[req.body.sheet].data.length; k++){
+   listcustomer.push({ 
+      name : listData[req.body.sheet].data[req.body.header + k][a1],
+      birth: listData[req.body.sheet].data[req.body.header + k][a2],
+      address: listData[req.body.sheet].data[req.body.header + k][a4],
+      address2: listData[req.body.sheet].data[req.body.header + k][a5],
+     addressbrand: listData[req.body.sheet].data[req.body.header + k][a3],
+    email: listData[req.body.sheet].data[req.body.header + k][a6],
+    phone:  listData[req.body.sheet].data[req.body.header + k][a7],
+    facebook:  listData[req.body.sheet].data[req.body.header + k][a8],
+    zalo:  listData[req.body.sheet].data[req.body.header + k][a9]
+    });
+   console.log(listcustomer.length);
+   }
+   });
 
 
 router.get('/signup', function(req, res, next) {
