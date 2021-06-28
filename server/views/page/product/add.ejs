@@ -1,0 +1,40 @@
+<form action="/product/add.php" method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="name">Tên Sản phẩm</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="code">Mã sản phẩm</label>
+      <input name="code" type="text" class="form-control" id="code" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="brand">Hãng</label>
+      <input name="brand" type="text" class="form-control" id="brand" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-group">
+      <label for="description">Mô tả</label>
+      <textarea  class="form-control"  name="description" id="description" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="price">Giá sản phẩm</label>
+      <input name="price" type="number" class="form-control" id="price" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="numinventory">Số lượng tồn kho</label>
+      <input name="numinventory" type="number" class="form-control" id="numinventory" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="supplier">Nhà cung cấp</label>
+      <input name="supplier" type="text" class="form-control" id="supplier" placeholder="">
+    </div>
+  </div>
+ <div class="form-row">
+      <label for="inlineFormInputGroupUsername">Người thêm: <b><%= user %></b></label>
+  </div>
+  <button type="submit" class="btn btn-primary" style="float: right;">Thêm sản phẩm</button>
+</form>

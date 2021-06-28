@@ -1,0 +1,75 @@
+<form method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">Tên nhân viên</label>
+        <input name="name" type="text" class="form-control" id="name" value="<%= produ.name %>" placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="code">Mã nhân viên</label>
+        <input name="code" type="text" class="form-control" id="code" value="<%= produ.code %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="birth">Ngày sinh</label>
+        <input name="birth" type="text" class="form-control" id="birth"  value="<%= produ.birth %>"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group">
+        <label for="relationship">Quan hệ xã hội</label>
+        <textarea  class="form-control"  name="relationship"  value="<%= produ.relationship %>"  id="relationship" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="levelwork">Trình độ</label>
+        <input name="levelwork" type="number" class="form-control" id="levelwork"  value="<%= produ.levelwork %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="socialnetwork">Mạng xã hội</label>
+        <input name="socialnetwork" type="number" class="form-control" id="socialnetwork"  value="<%= produ.socialnetwork %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="listcustomer">Danh sách khách hàng</label>
+        <input name="listcustomer" type="text" class="form-control" id="listcustomer"  value="<%= produ.listcustomer %>"  placeholder="">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="authoritystaff">Quyền nhân viên</label>
+        <input name="authoritystaff" type="number" class="form-control" id="authoritystaff"  value="<%= produ.authoritystaff %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="scancv">Scan hồ sơ xin việc</label>
+        <input name="scancv" type="number" class="form-control" id="scancv"  value="<%= produ.scancv %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="experience">Kinh nghiệm và công việc đã làm</label>
+        <input name="experience" type="text" class="form-control" id="experience"  value="<%= produ.experience %>"  placeholder="">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="leveledu">Cấp độ học tập nội bộ</label>
+        <input name="leveledu" type="number" class="form-control" id="leveledu"  value="<%= produ.leveledu %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="passhislogin">Mật khẩu và lịch sử đăng nhập</label>
+        <input name="passhislogin" type="number" class="form-control" id="passhislogin"  value="<%= produ.passhislogin %>"  placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="achievement">Thành tích</label>
+        <input name="achievement" type="text" class="form-control" id="achievement"  value="<%= produ.achievement %>"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group">
+        <label for="note">Ghi chú</label>
+        <textarea  class="form-control"  name="note" id="note"  value="<%= produ.note %>"  rows="3"></textarea>
+      </div>
+    </div>
+   <div class="form-row">
+        <label for="inlineFormInputGroupUsername">Người thêm: <b><%= user %></b></label>
+    </div>
+    <button type="submit" class="btn btn-danger" name="action" value="delete">Xóa sản phẩm</button>
+  <button type="submit" class="btn btn-primary" style="float: right;" name="action" value="update">Cập nhật thông tin</button>
+  </form>

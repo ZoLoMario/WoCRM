@@ -27,6 +27,16 @@ a {
   background-color: #3b5998;
   border-color: #fff;
 }
+.btn-zalo {
+  color: #fff;
+  background-color: #1caae5;
+  border-color: #fff;
+}
+.btn-other {
+  color: #fff;
+  background-color: #858796;
+  border-color: #fff;
+}
 form.user .custom-checkbox.small label {
   line-height: 1.5rem;
 }

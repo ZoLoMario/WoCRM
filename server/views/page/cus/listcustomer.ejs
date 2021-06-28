@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+        $('#dataTableab').DataTable( {
+            "lengthMenu": [ [25, 10, 50, 100, 200, -1], [25, 10, 50, 100, 200, "All"] ]
+        } );
+    } );
+        </script>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách khách hàng</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row"><div class="col-sm-12">
+                    <table class="table table-bordered display dataTable" id="dataTableab" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th rowspan="1" colspan="1">Họ và Tên</th>
+                            <th rowspan="1" colspan="1">Số điện thoại</th>
+                            <th rowspan="1" colspan="1">Email</th>
+                            <th rowspan="1" colspan="1">Ngày sinh</th>
+                            <th rowspan="1" colspan="1">Địa chỉ</th>
+                            <th rowspan="1" colspan="1">Địa chỉ 2</th>
+                            <th rowspan="1" colspan="1">Chi nhánh</th>
+                            <th rowspan="1" colspan="1">Facebook</th>
+                            <th rowspan="1" colspan="1">Zalo</th>
+                            <th rowspan="1" colspan="1">Hành động</th>
+                        </tr>
+                 </thead>
+                    
+                    <tbody>  
+                    
+                     
+                            <% for(var i=0; i < excelData.length; i++) { %>
+                               <tr role="row" class="odd">
+                                 <td><%= excelData[i].name %></td>
+                                 <td><%= excelData[i].phone %></td>
+                                 <td><%= excelData[i].email %></td>
+                                 <td><%= excelData[i].birth %></td>
+                                 <td><%= excelData[i].address %></td>
+                                 <td><%= excelData[i].address2 %></td>
+                                 <td><%= excelData[i].addressbrand %></td>
+                                 <td><%= excelData[i].facebook %></td>
+                                 <td><%= excelData[i].zalo %></td>
+                                 <td>
+                                    <a href="/view/<%= excelData[i]._id %>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                                 </td>
+                               </tr>
+                            <% } %>
+                    
+                    
+                    
+                    
+                    </tbody>
+                        <tfoot>
+                            <th rowspan="1" colspan="1">Tên</th>
+                            <th rowspan="1" colspan="1">Số điện thoại</th>
+                            <th rowspan="1" colspan="1">Email</th>
+                            <th rowspan="1" colspan="1">Ngày sinh</th>
+                            <th rowspan="1" colspan="1">Địa chỉ</th>
+                            <th rowspan="1" colspan="1">Địa chỉ 2</th>
+                            <th rowspan="1" colspan="1">Chi nhánh</th>
+                            <th rowspan="1" colspan="1">Facebook</th>
+                            <th rowspan="1" colspan="1">Zalo</th>
+                            <th rowspan="1" colspan="1">Hành động</th>
+                        </tfoot>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

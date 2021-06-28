@@ -1,0 +1,249 @@
+<style>
+  .autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+  }
+  
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
+  </style>
+<script>
+  function dataautocomplete(element, url) {
+  function autocomplete(inp, arr) {
+    var currentFocus;
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            b = document.createElement("DIV");
+            b.innerHTML = "<strong>" + arr[i].name.substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].name.substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+            var id = arr[i]._id;
+            b.addEventListener("click", function(e) {
+                inp.value = this.getElementsByTagName("input")[0].value;
+                $(inp).next().val(id);
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) { 
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      if (!x) return false;
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  };
+  element.addEventListener("click", function (e) {
+    $.post(url, function(countries) {
+      autocomplete(element, countries);
+      });
+    });   
+}
+  </script>
+<form method="POST">
+    <h5>Thông tin cơ bản</h5>
+    <div class="form-row">
+      <div class="autocomplete form-group col-md-6">
+        <label for="code">Nhân viên</label>
+        <input type="text" class="form-control" id="addbaStafft" value="<%= trade.baStaff.name %>" placeholder="">
+        <input name="addbaStaff" type="hidden" class="form-control" value="" id="addbaStaff" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="brand">Khách hàng</label>
+        <input  type="text" class="form-control" id="addbaCust" value="<%= trade.baCus.name %>" placeholder="">
+        <input name="addbaCus" type="hidden" class="form-control" value="" id="addbaCus" placeholder="">
+      </div>
+      
+    </div>
+    <h5>Sản phẩm</h5>
+    <div class="form-row">
+      <table  class="table table-borderless">
+        <thead>
+          <tr>
+              <th style="width: 5%">Thứ tự</th>
+              <th style="width: 30%">Tên Sản phẩm</th>
+              <th style="width: 15%">Số lượng sản phẩm</th>
+              <th style="width: 20%">Giá cả sản phẩm</th>
+              <th style="width: 20%">Chi phí khác</th>
+              <th style="width: 20%"></th>
+          </tr>
+   </thead>
+   <tbody id="listPdr">   
+    <% for(var i=0; i < trade.product.length; i++) { %>                     
+    <tr role="row" class="odd">
+      <td>
+        <%= i %>
+      </td>
+      <td>
+        <div style="position: relative;">
+        <input type="text" class="form-control" value="<%= trade.product[i].name.name %>" id="pro0" placeholder="">
+        <input name="pro0" type="hidden" class="form-control" value="" placeholder="">
+      </div>
+      </td>
+      <td>
+        <input name="pro0" type="text" value="<%= trade.product[i].sol %>" class="form-control" id="name" placeholder="">
+      </td>
+      <td>
+        <input name="pro0" type="text" value="<%= trade.product[i].price %>" class="form-control" id="code" placeholder="">
+      </td>
+      <td>
+        <input name="pro0" type="text" value="<%= trade.product[i].other %>" class="form-control" id="brand" placeholder="">
+      </td>
+      <td>
+         <a href="#" id="addprod" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+         <a href="#" id="addremo" class="btn btn-success"><i class="fa fa-minus" aria-hidden="true"></i></a>
+      </td>
+      <script>dataautocomplete(document.getElementById("pro0"), "/api/product/list.html") ;</script>
+    </tr>
+    <% } %>
+  </tbody> 
+      </table>
+      <script>
+        $("#addprod").click(()=>{
+          var geto = parseInt($("#listPdr > tr:last-child > td:first-child").html(),10) + 1;
+          console.log(geto);
+          var html = '<tr role="row" class="odd"><td >'+ geto +'</td><td><div style="position: relative;"><input type="text" class="form-control" id="pro'+ geto +'" placeholder=""><input name="pro'+ geto +'" type="hidden" class="form-control" value="" placeholder=""></div></td><td><input name="pro'+ geto +'" type="text" class="form-control" id="name" placeholder=""></td><td><input name="pro'+ geto +'" type="text" class="form-control" id="code" placeholder=""></td><td><input name="pro'+ geto +'" type="text" class="form-control" id="brand" placeholder=""></td><td></td><script>dataautocomplete(document.getElementById("pro'+ geto +'"), "/api/product/list.html");</'+'script></tr>';
+          $("#listPdr").append(html)
+        });
+        $("#addremo").click(()=>{
+          $("#listPdr>tr").last().remove()
+        });
+      </script>
+    </div>
+    <h5>Chứng từ</h5>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="name">Chứng từ liên quan</label>
+        <input name="adddocDoc" type="text" class="form-control" value="<%= trade.docDoc %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="name">Thời gian bắt đầu hợp đồng</label>
+        <input name="adddocStart" type="text" class="form-control" value="<%= trade.docStart %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="code">Thời gian kết thúc hợp đồng</label>
+        <input name="adddocEnd" type="text" class="form-control" value="<%= trade.docEnd %>"  id="code" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="brand">Khu vực thực hiện</label>
+        <input name="adddocAddress" type="text" class="form-control" value="<%= trade.docAddress %>"  id="brand" placeholder="">
+      </div>
+    </div>
+    <h5>Vận chuyển</h5>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="name">Chi phí vận chuyển</label>
+        <input name="addtranPrice" type="text" class="form-control" value="<%= trade.tranPrice %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="name">Thời gian vận chuyển</label>
+        <input name="addtranTime" type="text" class="form-control" value="<%= trade.tranTime %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="code">Hãng vận chuyển</label>
+        <input name="addtranBrand" type="text" class="form-control" value="<%= trade.tranBrand %>"  id="code" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="brand">Khu vực thực hiện</label>
+        <input name="addtranAddress" type="text" class="form-control" value="<%= trade.tranAddress %>"  id="brand" placeholder="">
+      </div>
+    </div>
+    <h5>Chăm sóc</h5>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="brand">Kênh bán hàng</label>
+        <input name="addcareChanel" type="text" class="form-control" value="<%= trade.careChanel %>"  id="brand" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="name">File ghi âm cuộc gọi</label>
+        <input name="addcareRecord" type="text" class="form-control" value="<%= trade.careRecord %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="name">Gọi điện cho khách hàng</label>
+        <input name="addcareCall" type="text" class="form-control" value="<%= trade.careCall %>"  id="name" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="code">Người khởi tạo</label>
+        <input name="addcareCreate" type="text" class="form-control" value="<%= trade.careCreate %>"  id="code" placeholder="">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="brand">Khu vực thực hiện</label>
+        <input name="addcareAdress" type="text" class="form-control" value="<%= trade.careAdress %>"  id="brand" placeholder="">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary"  action="update" style="float: right;">Cập nhật</button>
+    <button type="submit" class="btn btn-danger" action="delete">Xóa</button>
+  </form>
+  <script>
+    dataautocomplete(document.getElementById("addbaCust"), "/api/custom/list.html") ;
+    dataautocomplete(document.getElementById("addbaStafft"), "/api/staff/list.html") ;
+  </script>

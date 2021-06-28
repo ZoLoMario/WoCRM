@@ -10903,7 +10903,7 @@ a:focus {
         margin-bottom: 1rem
     }
     .sidebar.toggled .nav-item .nav-link {
-        text-align: left;
+        text-align: center;
         padding: .75rem 1rem;
         width: 6.5rem
     }

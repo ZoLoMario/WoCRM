@@ -45,3 +45,19 @@ Git
 Visual studio
 
 Vấn đề thuwuc thi trước sau khi thêm người dùng
+
+08.04.2021
+Xử lí từng chyuwsc năng và fix các bug phát sinh
+- không nhận link
+- Tim kiếm khách hàng qua thông tin trên nền tảng facebook và zalo dựa vào số điiện thoại, lấy thông tin người liên quan để vào danh sách khách hàng tiềm năng
+- Tính năng xuất thông tin khách hàng
+- Tự động nhận cách thông số sau đó người dùng không phải nhập vào
+- kiểm tra giá trị đầu vào
+- Đọc nhiều code người khác để có kinh nghiệm
+
+09.04.2021
+tự nhận trường dữ liệu
+lọc file
+các mogule và các app riêng biệt
+
+Chia Task và tính thời gian

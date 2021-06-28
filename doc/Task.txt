@@ -1,0 +1,242 @@
+Mô tả chi tiết các tash cần làm
+- Thiết kế database và giao diện
+- phân tách các tấk lớn thành task nhỏ
+
+Phân tích thiết kế database
+- Các bảng dư dữ liệu có 
+- Bảng dữ liệu về khách hàng
+các trườing càn phải có của bảng gồm
+ Tên 
+ Ngày sinh 
+ Địa chỉ 1 
+ Địa chỉ 2 
+ Địa chỉ chi nhánh giao dịch
+ Email
+ Số điện thoại
+ facebook 
+ zalo
+ Link các mạng xa hội
+ Ghi chú
+ Tinh trạng quan hệ
+ Công ty 
+ chức vụ tại công ty
+ số lượng bạn bè, quan hệ xa hội
+ Sự kiện trong đời
+ các tag chứa về người dùng
+các trườg tự tạo
+ Danh sách các giao dịch
+
+
+- Bảng cơ sở dữ liệu về các giao dịch
+mã giao dịch được kết hợp từ các giao thời gian giao dịch và mã id của khách hàng với id của nhân viên thời gian giao dịch là thời gian khởi tạo
+- Khối lượng giao dịch, các loại giá cả và chí phí
+- Số lượng giao dịch, các loại mặt hàng
+- Ghi chú về quá trình gia dịch
+- Chứng từ liên quan
+- Nhân viên thực hiện
+- Khách hàng thực hiện
+- Thời gian bắt đầu giao dịch và thời gian cuối gia dịch
+- khu vực giao dịch chí nhánh thực hiện
+- hãng xe giao hàng chí phí giao hàng
+- Dự toán lợi nhuận
+- Chí phí giao dịch
+- kênh bán hàng và giao dịch
+- báo giá của giao dịch
+- thông tin cuộc gọi và ghi âm cuộc gọi để đánh giá giao dịhc và ghi vào nội dung đào tạo
+- các công việc tỏng giao dịch
+- Ai tạo gia dịch, sửa đổi giao dịch
+
+
+bảng dữ liệu về nhân viên
+- Tên nhân viên  name
+- mã nhân viên và id - code 
+- ngày sinh nhân viên - birth
+- Quan hệ bàn bè - relationship
+- Trình độ - levelwork
+- kênh mạng xa hội - socialnetwork
+- Danh sách khách hàng chăm sóc - listcustomer
+- Quyền của nhân viên - authoritystaff
+- File hồ sơ xin việc scan - scancv
+- Các công việc đã làm - experience
+- Cấp độ đã học đào tạo - leveledu
+- Mật khẩu và lịch sử đăng nhập - passhislogin
+- Thành tích - achievement
+
+Bản dữ công việc
+- Tên công việc
+- Nội dung công việc
+
+Bảng dữ liệu về sản phẩm
+- Tên sản phẩm name
+- Giá sản phẩm price
+- Số lựogn sản phẩm numinventory
+- lich sử biến động giá hisprice
+- Ai thêm và sửa giá, chỉnh sử thôg tin sản phẩm hiseditor
+- Đánh giá chất lượng sản phẩm do khách hàng phẩn hồi evaluate
+- Nhà cung cấp sản phẩm supplier
+- Mô tả sản phẩm description
+- Hãng brand
+// điểm đánh giá pointev
+
+
+Bảng dữ liệu vè lịch sử đăng nhập 
+- Thời gian đăng nhập-
+- Usergent nguồi đang nhập
+- Thời gian online
+- đỊa chỉ Ip người đănh nhập
+
+bảng dự liệu khác
+- Hoạt động
+- Tag thông tin
+
+Bảng tag dữ liệu
+- Tên tag
+- nội dung tag
+- Mô tả tag
+
+bảng dữ liệu kháo đào tạo
+- Video đầo tạo
+- tên khóa
+- Mô tả
+- Tính cấp độ
+- Danh sách nhân viên đã đào tạo mỗi khóa0
+
+Thiết kế giao diện
+- Giao diện dựa trên nền tảng admin
+- Sử dụng bootrap và frmewwork chính trong thiết kế kế giao diện
+- Có lànpage để quảng cáo website
+
+Nguyên tắc bảo Mật
+- Mọi giao tiếp phải có xác thực
+- Mật khẩu bvaf input phải kiểm tra trước khi đăn đăng nhập
+- Dữ liệu sẽ dc kiêm tra tại server, tính đến phương án thiết kế server xác thực riêng
+
+
+Chia task các nhiệm vụ
+
+Xử lí khách hàng
+- Thêm khách hàng - đã hoàn thành
+- Sửa thong tin khác hàng get thông tin khách ahfng bằng id , hiển thị vào input, update dữ liệu (getCustomer, setCustomer )
+- Xóa khách hàng, send id cho máy chủ và thực hiện xóa (deleteCustomer)
+- Xuất code HTML dạng post về 1 về 1 trang có kèm mã nhân viên (createCustomer(obj, trả lại dữ liệu, có thông tin nguoi gioi thieu))
+- Get thông tin từ zalo (xử lí sang giai đoạn 2 của dự án)
+- Get thông tin facebook, update lại thông tin (xử lí sang giai đoạn 2 của dự án)
+- Nhập danh dang sach từ file excel, csv, json, vcf đã ok
+- Xuất các file tương ứng (exExcel, exCsv, exJson, exVcf)
+Tren app mobile lấy dữ liệu từ danh bạn
+- Hiển thị danh sách khách hàng, khách hàng mới nhập chưa giao dịch là khách hàng tiềm năng, (showCusstomer(tenn các trưường hiển thị), chageCustomer)
+- Hàm tính giá trị tiềm năng và giá trị trung thành cusPotential(ìd), cusLoyalty(id)
+- Xuất báo cáo khách hàng (cusReport)
+- Thêm tag cho khách hàng (cusAddtag, cusRemovetag)
+- Thêm giao dịch (cusAddtrade), xóa giao dịch(cusRemovetrade), sửa giao dịch (cusUpdatetrade), hàm ghi lại lịch sử sửa đổi (historyTrade)
+
+Xử lí sản phẩm
+- Thêm sản phẩm (addProduct), xóa sản phẩm(removeProduct), sửa sản phẩm (updateProduct), lọc sản phẩm (filterProduct)
+
+
+Xử lí giao dịch
+- Thêm giao dịch(addTrade)
+- lọc giao dịch (filterTrade)
+- Xuất báo cáo (exportTrade) 
+
+Chăm sóc khác hàng
+- Gửi thông báo cho nhân viên qua mail và qua thông báo của nền tảng, có thể tắt bật thông báo (sendNotify), cài đặt thông báo (setNotify) kèm hành động
+- Tạo mãu gửi chúc mừng (setSebrthday),với biến tên khách hàng, các thông báo riêng tới khách hàng
+- Lọc khách hàng và tạo nhóm, chsinh sách mỗi nhóm (filterCusgroup, setCusgroup)
+- Cài đặt chát và chat cơ bản(xử lí sau)
+- Tự động đăng bài Facebook sau (xử lí sau)
+- Tạo nhóm setGroup, thêm thành viên vào nhóm addGroupcus, xóa thành viên nhóm (removeGroupcus), các chsinh sách nhóm setPolicyGroup
+- Theo dõi và ghi nhận lịch sử khách hàng(historyGroup, filtergroup)
+- xuất báo cáo về khách hàng (reportCusstomer)
+
+Quản lí nhân viên
+- Tạo nhân viên (addStaff), sửa thông tin nhân viên (updateStaff), xóa nhân viên (removeStaff), xóa sẽ ghi vào file log hay cơ sở dữ liệu riêng, lihcg sử sửa đổi
+- Quản lí file tài liệu nhân viên (docStaff)
+- Thêm xóa sửa khách hàng cho nhân viên (addCusStaff, removeCusStaff), thêm lịch sử
+- tạo viêc (addWork), sửa việc (updateWork), xóa việc(removeWork) cho nhân viên
+- thay đổi pass (changePass)
+- tạo báo giá(addBgia), sửa báo giá (updateBgia), ghi nhận lích sử sửa (historyBgia)
+- Ghi nhận lịch sử đăng nhập(historyLog)
+- Lích ử xem video và mức độ học tập
+
+Quản lí quền admin
+- Set quyền viện (setStaff)
+- Chính sửa danh sách đào tạo (addVideo, remove video)
+- Gửi thông báo đến nhân viên
+
+sử dụng đuôi php để đánh lừa 1 số thằng ngu
+
+0964395910
+
+sử dụng giải pháp backup cơ sở dữ liệu thay vì theo dõi lịch sử
+CRM-master code này chỉ sử dụng api không có giao diện
+CRM_NodeJs-master chẳng có gì cả ngoài cái khung ban đầu
+customerly-master viết front end sử dụng react-scripts 
+fullstack_crm-master sử dụng giao diện fontend là Angular
+habitica-developcd game trên website cd 
+
+
+27.04.2012
+- Thêm vào phần ghi lịch sử xử giá để theo dõi và ghi nhận giá thay đổi và lijxch sử sửa để có hồ sơ về sản phẩm
+- Lên kế hoạch marketring
+- Làm việc trước hạn
+- Nói về chứng quyền
+
+28.04.2021
+- Quatn lí xóa hết các nhóm đang tham gia và trang đã thích chỉ nhóm trang và nhóm liên quan tới trong làng, để nick này chỉ có tin bạn bè, và 1 nick khác cho công việc và quảng cáo và đọc thông tin
+- Còn làm app mobile chó ứng dụng cần chạy là wonote
+- Tìm hiểu qua về NextJs và Java
+- học qua về C tidm kiếm các kĩ năng học thêm các kĩ năng marketring
+- Căn chỉnh lại thuạt toán search trong úng dụng note
+- rèn luện thêm kĩ năng tiếng anh và tiếng nhật
+- Java Spring
+
+16.05.2021
+- Đang gặp ván đề là filter cso càn thiết không khi có công cụ search, 
+- Loại bỏ tính năng filter để sử dụng tính năng search- Tính năng lọc sản phẩm sẽ sử dụng sau
+- vẫn làm tính năng lọc để tính kiếm những sản phẩm đạt yêu cầu khi nào không càn thì boe sau các tính năng phải ổn định]
+
+
+20.05.2021
+- Tạo tự động điền
+- Căn chỉnh lại tinh năng thêm giao dịch 
+- Tính năng xuất bảo giá và xin duyệt báo giá
+
+21.05.2021
+- một vài quy định về dặt tên biến 
+- Đặt tên file 
+- Sử lý thêm và quản lí nhân viên bán hàng
+- Đang thiếu quản lý nhân viên bán hàng
+- Các tính năng về giao dịch bị tạm dừng do thiếu dữ liệu về nhân viên
+- Nhóm các trường lại với nhau
+- Mỗi nhân viên coi thành tích như 1 trò chơi
+- Các khóa đào tạo cho nhân viên nội bộ
+
+
+23.05.2021
+- Xử lí các chức năng quản lí nhân viên, thêm , sửa , xóa
+- Chưa có phẩn lịch sử sử đổi vì cso dữ liệu backup database theo thời gian
+- Nghĩ về chứ năng quản lí tài liệu và cơ chế
+- Chia File dễ quản lí tính năng
+- Mỗi file code không quá 300 dùng
+
+11.06.2021
+- Xử lia các vấn đề đề bug như giao diện không có silderbar icon
+- Đăng nhập không lưu trữ dc thời gian dài
+- Đăng nhập bằng tài khoản mạng xã hội
+- Xử lí thông tin giao dịch, báo cáo
+- Đăng kí tai khoản
+- Quên mật khẩu
++ Không xử lí đăng nhập bằng mạng xã hội được do không có máy chủ xác thực
++ Phần xác thực mạng xã hội cần phải đăng nhập để ủy quyền từ mạng xã hội nên để sau làm phần khác
+
+14.06.2021
+- Làm phần biểu đồ 
+
+27.06.2021
+- Làm phần báo giá trong giao dịch
+- Xem, sửa các giao dịch
+- Di chuyển về đúng link sao khi đang nhập
+
+- phần cài đặt và điền báo giá tạo mẫu có sẵn khi giao dịch
+- 

@@ -1,0 +1,41 @@
+<form method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="name">Tên Sản phẩm</label>
+      <input name="name" type="text" class="form-control" value="<%= produ.name %>" id="name" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="code">Mã sản phẩm</label>
+      <input name="code" type="text" class="form-control" value="<%= produ.code %>" id="code" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="brand">Hãng</label>
+      <input name="brand" type="text" class="form-control" value="<%= produ.brand %>" id="brand" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-group">
+      <label for="description">Mô tả</label>
+      <textarea  class="form-control"  name="description" value="<%= produ.description %>" id="description" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="price">Giá sản phẩm</label>
+      <input name="price" type="number" class="form-control" value="<%= produ.price %>" id="price" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="numinventory">Số lượng tồn kho</label>
+      <input name="numinventory" type="number" class="form-control" value="<%= produ.numinventory %>" id="numinventory" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="supplier">Nhà cung cấp</label>
+      <input name="supplier" type="text" class="form-control" value="<%= produ.supplier %>" id="supplier" placeholder="">
+    </div>
+  </div>
+ <div class="form-row">
+      <label for="inlineFormInputGroupUsername">Người thêm: <b><%= user %></b></label>
+  </div>
+  <button type="submit" class="btn btn-danger" name="action" value="delete">Xóa sản phẩm</button>
+  <button type="submit" class="btn btn-primary" style="float: right;" name="action" value="update">Cấp nhật thông tin</button>
+</form>

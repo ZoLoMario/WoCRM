@@ -1,0 +1,378 @@
+
+<link rel='stylesheet' href='/stylesheets/file.css' />
+            
+            <div class="row">
+                <div class="col-sm-9 tab-content no-bg no-border">
+                    <div class="tab-pane active documents documents-panel">
+                      
+                        <% produ.file.forEach(function(file){ %>
+                            <% if (file.mimetype == 'application/octet-stream') { %>
+                            <!-- <a href="/staff/doc/<%= file._id %>">                        </a> -->
+                            <div class="document success" id="<%= file._id %>">
+                                <div class="document-body">
+                                    <% if (file.mimetype == 'application/octet-stream') { %>
+                                        <i class="fa fa-file-archive-o text-success"></i>
+                                    <% } else if (file.minetype == 'application/msword' ) { %>
+                                        <i class="fa fa-file-word-o text-danger"></i>
+                                    <% } else { %>
+                                        <i class="fa fa-file-excel-o text-success"></i>
+                                    <% } %>
+                                </div>
+                                <div class="document-footer">
+                                    <span class="document-name"> <%= file.originalname %> </span>
+                                    <span class="document-description"> <%= file.size %> bytes </span>
+                                </div>
+                                
+                                
+                            </div>
+                            
+
+                        <% } else if (file.minetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentatio' ) { %>
+                            <div class="document warning" id="<%= file._id %>">
+                                <div class="document-body">
+                                    <i class="fa fa-file-powerpoint-o text-warning"></i>
+                                </div>
+                                <div class="document-footer">
+                                    <span class="document-name"><%= file.originalname %></span>
+                                    <span class="document-description"> <%= file.size %> bytes </span>
+                                </div>
+                            </div>
+                            
+                        <% } else { %>
+                            <div class="document" id="<%= file._id %>">
+                                <div class="document-body">
+                                    <i class="fa fa-file-word-o text-info"></i>
+                                </div>
+                                <div class="document-footer">
+                                    <span class="document-name"> <%= file.originalname %> </span>
+                                    <span class="document-description"> <%= file.size %> bytes </span>
+                                </div>
+                            </div>
+                        <% } %>
+                        <%  }); %>
+                        <!-- <script>
+                            $(".document").on('click', function(){
+                                console.log(this.id);
+                                $.post( "/staff/doc/" + this.id ,{},{responseType: 'arraybuffer'}).then(function (data, textStatus, xhr) {
+                                    // console.log(response);
+                                     var blob = new Blob([data],{type:xhr.getResponseHeader("content-type")});
+                                    var namefile = xhr.getResponseHeader("content-disposition").split(';')[1].split('filename')[1].split('=')[1].trim();
+                                    console.log(xhr.getAllResponseHeaders());
+                                    console.log(xhr.getResponseHeader("content-disposition").split(';')[1].split('filename')[1].split('=')[1].trim());
+                                    console.log(xhr.getResponseHeader("content-type"));
+                                    var link = document.createElement('a');
+                                    link.href=window.URL.createObjectURL(blob);
+                                    console.log(namefile.split('"')[1]);
+                                    link.download = namefile.split('"')[1];
+                                    link.click();
+                                    });
+                            });
+                        </script> -->
+                        
+                        <div class="document">
+                            <div class="document-body">
+                                <i class="fa fa-file-excel-o text-success"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> Excel database 2016 </span>
+                                <span class="document-description"> 1.1 MB </span>
+                            </div>
+                        </div>
+                        <div class="document info">
+                            <div class="document-body">
+                                <i class="fa fa-file-word-o text-info"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> Word file 2017 </span>
+                                <span class="document-description"> 932 KB </span>
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="document">
+                            <div class="document-body">
+                                <i class="fa fa-file-powerpoint-o text-warning"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> Presentation 2016 </span>
+                                <span class="document-description"> 1.9 MB </span>
+                            </div>
+                        </div>
+                        <div class="document danger">
+                            <div class="document-body">
+                                <i class="fa fa-file-pdf-o text-danger"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> PDF file 2017 </span>
+                                <span class="document-description"> 5.3 MB </span>
+                            </div>
+                        </div>
+                        <div class="document">
+                            <div class="document-body">
+                                <i class="fa fa-file-pdf-o text-danger"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> PDF file 2016 </span>
+                                <span class="document-description"> 4.4 MB </span>
+                            </div>
+                        </div>
+                        <div class="document dark">
+                            <div class="document-body">
+                                <i class="fa fa-file-video-o text-dark"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name text-dark"> Video file 2017 </span>
+                                <span class="document-description"> 18.2 MB </span>
+                            </div>
+                        </div>
+                        <div class="document">
+                            <div class="document-body">
+                                <i class="fa fa-file-video-o text-dark"></i>
+                            </div>
+                            <div class="document-footer">
+                                <span class="document-name"> Video file 2016 </span>
+                                <span class="document-description"> 23.7 MB </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+
+
+                <div class="col-sm-3">
+                    <div class="panel panel-dark-outline tabs-panel">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs pull-left type-document">
+                                <li class="active"><a data-toggle="tab" href="#" aria-expanded="true"> <i class="fa fa-file"></i> Documents</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="documents-panel">
+                                <a class="badge badge-success" href="#">Excel</a>
+                                <a class="badge badge-info" href="#">Word</a> 
+                                <a class="badge badge-warning" href="#">Powerpoint</a>
+                                <a class="badge badge-danger" href="#">PDF</a>
+                                <a class="badge badge-dark" href="#">Video</a>
+                                <div class="clear"></div>
+                                <div class="v-spacing-xs"></div>
+                                <h4 class="no-margin-top"> Folders</h4>
+                                <ul class="folders list-unstyled">
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Web projects
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Presentation files
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Books
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Contest
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Our Projects
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Our Music
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="#">
+                                            <i class="fa fa-folder"></i> Messenger sounds
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div id="butfile" class="butfile"></div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <a class="badge badge-success" id="btdownload" href="#"><i title="Tải xuống" class="fa fa-download fa-2x"></i></a>
+                                    <a class="badge badge-info" id="btinfo" href="#"><i title="Thông tin" class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-info" href="#"><i title="Xóa" class="fa fa-recycle fa-2x" aria-hidden="true"></i></a> 
+                                    <a class="badge badge-warning" href="#"><i title="Lịch sử" class="fa fa-history fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-danger" href="#"><i title="Share mã QR" class="fa fa-qrcode fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-primary" href="#"><i title="Gửi" class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-secondary" href="#"><i title="Tải lên" class="fa fa-upload fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-light" id="btdelete" href="#"><i title="Xóa" class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-dark" href="#"><i title="Ghim" class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-primary" href="#"><i title="Quyền" class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-danger" href="#"><i title="Thêm người dùng" class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
+                                    <a class="badge badge-info" href="#"><i title="Cài đặt" class="fa fa-wrench fa-2x" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="row">
+                                    <div class="v-spacing-xs" id="upload_form" >
+                                        <form action="/staff/doc/upload" class="upload" enctype="multipart/form-data" method="post" >
+                                          <div class="custom-file">
+                                              <input type="file" class="custom-file-input" accept="" name="file1" id="file1" >
+                                              <label class="custom-file-label" for="customFile">Choose file</label>
+                                          </div>
+                                          <div id="progress"></div>
+                                            <h6 id="status"></h6>
+                                            <p id="loaded_n_total"></p>
+                                          <a class="btn btn-block btn-success" onclick="uploadFile()"> <i class="fa fa-plus"> </i> Upload</a>
+                                          </form>
+                                      </div>
+                                </div>
+                                <div class="row" id="baninfo">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(".document").on('click', function(){
+                    var paid = this.id;
+                    var po = this;
+                    var dicid = $("#butfile").html() ;
+                    console.log();
+                    if( ! $(po).hasClass("divclick")){
+                    console.log("paid" +  paid);
+                    this.classList.add("divclick");
+                    console.log(dicid.split(",").includes(paid));
+                    console.log("dicid" + dicid);
+                    if(dicid.split(",").includes(paid) == false ) {
+                        $("#butfile").html(dicid + "," + paid)
+                }} else {
+                    console.log("123  " +  paid);
+                    $("#butfile").html(dicid.replace("," + paid,''));
+                    $(po).removeClass("divclick");
+                }
+            });
+            $("#btdownload").on('click', function(){
+                if( $("#butfile").html() == "" ) {
+                    $("#loaded_n_total").html("Vui lòng chọn Tập tin");
+                } else {
+                    var arrayEl = $("#butfile").html().split(",");
+                    arrayEl.shift();
+                    console.log(window.location);
+                    arrayEl.forEach((elem)=>{
+                        url = window.location.origin + "/staff/doc/" + elem ;
+                        var a = document.createElement("a");
+                        a.setAttribute('href', url);
+                        a.setAttribute('download', '');
+                        a.setAttribute('target', '_blank');
+                        a.click();
+                    });
+                }
+            });
+            $("#btdelete").on('click', function(){
+                if( $("#butfile").html() == "" ) {
+                    $("#loaded_n_total").html("Vui lòng chọn Tập tin");
+                } else {
+                    var arrayEl = $("#butfile").html().split(",");
+                    arrayEl.shift();
+                    console.log(arrayEl);
+                    $.ajax({
+                        type: "POST",
+                        url: "/staff/doc/delete",
+                        data: {"id": arrayEl} ,
+                        success: (data)=>{
+                            console.log("ok");
+                            document.location.reload();
+                        }
+                        });
+                    
+                }
+            });
+            $("#btinfo").on('click', function(){
+                if( $("#butfile").html() == "" ) {
+                    $("#loaded_n_total").html("Vui lòng chọn Tập tin");
+                } else {
+                    var arrayEl = $("#butfile").html().split(",");
+                    arrayEl.shift();
+                    console.log(arrayEl);
+                    $.ajax({
+                        type: "POST",
+                        url: "/staff/doc/info",
+                        data: {"id": arrayEl} ,
+                        success: (data)=>{
+                            console.log("ok");
+                            console.log(data);
+                            data.forEach(
+                                (elem)=>{
+                                    $("#baninfo").append("<ul><li>" + elem.destination + "</li><li>" + elem.encoding + "</li><li>" + elem.fieldname + "</li><li>" + elem.filename + "</li><li>" + elem.ishas + "</li><li>" + elem.mimetype + "</li><li>" + elem.originalname + "</li><li>" + elem.path + "</li><li>" + elem.size + "</li></ul>")
+                                }
+                            );
+                        }
+                        });
+                    
+                }
+            });
+                function _(el) {
+    return document.getElementById(el);
+  }
+  
+  function uploadFile() {
+    _("progress").innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  id="progressBar"  aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div></div>'
+    var file = _("file1").files[0];
+    // alert(file.name+" | "+file.size+" | "+file.type);
+    var formdata = new FormData();
+    formdata.append("file1", file);
+    formdata.append("file2", "0");
+    formdata.append("file1", "1");
+    formdata.append("file1", "2");
+    formdata.append("file1", "3");
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "/staff/doc/upload");
+    ajax.setRequestHeader( 'Content-Type','multipart/form-data; boundary=blob' );
+    console.log(formdata);
+    $.ajax({
+    url: '/staff/doc/upload',
+    data: formdata,
+    type: 'POST',
+    xhr: function () {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                myXhr.upload.addEventListener("progress", progressHandler, false);
+                myXhr.addEventListener("load", completeHandler, false);
+                myXhr.addEventListener("error", errorHandler, false);
+                myXhr.addEventListener("abort", abortHandler, false);
+            }
+            return myXhr;
+        },
+    contentType: false,
+    processData: false,
+});
+  }
+  function startHandler(event) {
+    _("status").innerHTML = event.target.responseText;
+    _("progressBar").value = 0; //wil clear progress bar after successful upload
+  }
+  function progressHandler(event) {
+    var percent = (event.loaded / event.total) * 100;
+    _("progressBar").value = Math.round(percent);
+    _("progressBar").innerHTML = Math.round(percent) + "%";
+    $("#progressBar").css({"width": Math.round(percent) + "%"});
+    _("status").innerHTML = event.loaded + " bytes / " + event.total + " bytes uploaded";
+  }
+  
+  function completeHandler(event) {
+    _("status").innerHTML = event.target.responseText;
+    _("progressBar").value = 0; //wil clear progress bar after successful upload
+  }
+  
+  function errorHandler(event) {
+    _("status").innerHTML = "Upload Failed";
+  }
+  
+  function abortHandler(event) {
+    _("status").innerHTML = "Upload Aborted";
+  }
+              </script>
+           

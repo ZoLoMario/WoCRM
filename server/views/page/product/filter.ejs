@@ -1,0 +1,46 @@
+<form method="POST">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Lọc và tìm kiếm sản phẩm</li>
+    </ol>
+  </nav>
+    <div class="form-group">
+      <label for="name">Tên Sản phẩm</label>
+      <input name="name" type="text" class="form-control" value="" id="name" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="code">Mã sản phẩm</label>
+      <input name="code" type="text" class="form-control" value="" id="code" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="brand">Hãng</label>
+      <input name="brand" type="text" class="form-control" value="" id="brand" placeholder="">
+    </div>
+  <div class="form-group">
+    <div class="form-group">
+      <label for="description">Mô tả</label>
+      <textarea  class="form-control"  name="description" value="" id="description" rows="3"></textarea>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="price">Giá sản phẩm</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <select class="form-control btn btn-outline-secondary dropdown-toggle" name="price1" id="price1">
+            <option>&#60</option>
+            <option>&#60=</option>
+            <option>=</option>
+            <option>&#62=</option>
+            <option>&#62</option>
+          </select>
+
+        </div>
+        <input type="number" class="form-control"  id="price2" name="price2" aria-label="Text input with dropdown button">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="supplier">Nhà cung cấp</label>
+      <input name="supplier" type="text" class="form-control" value="" id="supplier" placeholder="">
+    </div>
+  <button type="submit" class="btn btn-primary" style="float: right;" name="search" value="filter">Lọc</button>
+</form>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng nhập</title>
+    <!-- <meta name="google-signin-client_id" content="835622301327-tu4c4t2nahdr53ivhrhnr1nnjv88remn.apps.googleusercontent.com"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  </head>
+  <body class="bg-gradient-primary">
+      <div class="container">
+  
+          <!-- Outer Row -->
+          <div class="row justify-content-center">
+  
+              <div class="col-xl-10 col-lg-12 col-md-9">
+                  <div class="card o-hidden border-0 shadow-lg my-5">
+                      <div class="card-body p-0">
+                          <!-- Nested Row within Card Body -->
+                          <div class="row">
+                              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                              <div class="col-lg-6">
+                                  <div class="p-5">
+                                      <div class="text-center">
+                                          <h1 class="h4 text-gray-900 mb-4">WoTech CRM</h1>
+                                      </div>
+                                      <p class="mb-4"><%= message %> </p>
+                                      <form class="user" action="/" method="POST">
+                                          <div class="form-group">
+                                              <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email đăng nhập">
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu">
+                                          </div>
+                                          <div class="form-group">
+                                              <div class="custom-control custom-checkbox small">
+                                                  <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                  <label class="custom-control-label" for="customCheck">Nhớ đăng nhập</label>
+                                              </div>
+                                          </div>
+                                          <button class="btn btn-primary btn-user btn-block"  type="submit" >
+                                              Đăng nhập
+                                          </button>
+                                          <hr>
+                                          <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" id="logingoogle" class="btn btn-google btn-user btn-block">
+                                                       <i class="fa fa-google fa-fw"></i> Google 
+                                                  </a>
+                                                  <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                      <i class="fa fa-facebook-f fa-fw"></i> Facebook
+                                                  </a>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a href="#"" class="btn btn-zalo btn-user btn-block">
+                                                       <i class="fab fa-google fa-fw"></i>  Zalo 
+                                                  </a>
+                                                <a href="#"" class="btn btn-other btn-user btn-block">
+                                                    <i class="fab fa-google fa-fw"></i>  Khác 
+                                               </a>
+                                            </div>
+                                          </div>
+                                          
+                                          
+                                      </form>
+                                      <hr>
+                                      <div class="text-center">
+                                          <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
+                                      </div>
+                                      <div class="text-center">
+                                          <a class="small" href="/signup">Tạo tài khoản !</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+  
+              </div>
+  
+          </div>
+  
+      </div>
+      <script>
+        
+var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '835622301327-tu4c4t2nahdr53ivhrhnr1nnjv88remn.apps.googleusercontent.com',
+        //cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('logingoogle'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var pcope = googleUser.getGrantedScope();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+            console.log("Scope: " + pcope);
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  startApp();
+      </script>
+  
+  </body></html>
+
+
+
+  </body>
+</html>

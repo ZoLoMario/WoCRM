@@ -1,0 +1,56 @@
+<form method="POST">
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Tên khách hàng</label>
+        <input name="name" type="text" class="form-control" id="inputEmail4" value="<%= customM.name %>" placeholder="VŨ ĐĂNG KHÔI">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Ngày sinh</label>
+        <input name="birth" type="date" class="form-control" id="inputPassword4" value="<%= customM.birth %>" placeholder="13/12/1995">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Địa chỉ</label>
+      <input name="address" type="text" class="form-control" id="inputAddress" value="<%= customM.address %>"  placeholder="Mão Điền, Thuận Thành, Bắc Ninh">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Địa chỉ 2</label>
+      <input name="address2" type="text" class="form-control" id="inputAddress2" value="<%= customM.address2 %>"  placeholder="Phương Liễu, Quế Võ, Bắc Ninh">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Địa chỉ đăng kí giao dịch</label>
+      <input name="addressbrand" type="text" class="form-control" id="inputAddress2" value="<%= customM.addressbrand %>"  placeholder="Chi Nhánh Bắc Ninh">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Email</label>
+        <input name="mail" type="email" class="form-control" id="inputCity" value="<%= customM.email %>"  placeholder="dangkhoi.kvip@gmail.com">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Số điện thoại</label>
+        <input name="phone" type="number" class="form-control" id="inputState" value="<%= customM.phone %>"  placeholder="0987451789">
+      </div>
+    </div>
+   <div class="form-row">
+        <label for="inlineFormInputGroupUsername">Facebook</label>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i aria-hidden="true" class="fa fa-facebook" data-v-c9ef43f6=""></i></div>
+          </div>
+          <input name="facebook" type="text" class="form-control" id="inlineFormInputGroupUsername" value="<%= customM.facebook %>"  placeholder="fb.me/dangkhoi.kvip">
+      </div>
+    </div>
+    <div class="form-row">
+        <label for="zalo">Zalo</label>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><b>Z</b></div>
+          </div>
+          <input name="zalo" type="text" class="form-control" id="Zalo" value="<%= customM.zalo %>"  placeholder="zalo.me/dangkhoi.kvip">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-danger" name="action" value="delete">Xóa khách hàng</button>
+    <button type="submit" class="btn btn-primary" style="float: right;" name="action" value="update">Cấp nhật thông tin</button>
+    <button type="submit" class="btn btn-info" name="action" value="autoupdate">Tự động tìm kiếm</button>
+  </form>
