@@ -514,4 +514,16 @@ CtrlData.findByIdAndUpdateTrade = async (id,obj) => {
   });
   return docc;
 };
+CtrlData.findByIdAndDeleteTrade = async (id) => {
+  await Trade.findByIdAndDelete(id,(err, docs)=>{
+    if (err){
+      console.log(err)
+    }
+    else{
+      console.log("Deleted : ", docs);
+      console.log('xóa thành công');
+    }
+  });
+};
+
 module.exports = CtrlData;

@@ -115,12 +115,12 @@
       <div class="autocomplete form-group col-md-6">
         <label for="code">Nhân viên</label>
         <input type="text" class="form-control" id="addbaStafft" value="<%= trade.baStaff.name %>" placeholder="">
-        <input name="addbaStaff" type="hidden" class="form-control" value="" id="addbaStaff" placeholder="">
+        <input name="addbaStaff" type="hidden" class="form-control" value="<%= trade.baStaff._id %>" id="addbaStaff" placeholder="">
       </div>
       <div class="form-group col-md-6">
         <label for="brand">Khách hàng</label>
         <input  type="text" class="form-control" id="addbaCust" value="<%= trade.baCus.name %>" placeholder="">
-        <input name="addbaCus" type="hidden" class="form-control" value="" id="addbaCus" placeholder="">
+        <input name="addbaCus" type="hidden" class="form-control"  value="<%= trade.baCus._id %>" id="addbaCus" placeholder="">
       </div>
       
     </div>
@@ -146,7 +146,7 @@
       <td>
         <div style="position: relative;">
         <input type="text" class="form-control" value="<%= trade.product[i].name.name %>" id="pro0" placeholder="">
-        <input name="pro0" type="hidden" class="form-control" value="" placeholder="">
+        <input name="pro0" type="hidden" class="form-control" value="<%= trade.product[i].name._id %>" placeholder="">
       </div>
       </td>
       <td>

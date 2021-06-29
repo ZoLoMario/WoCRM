@@ -57,10 +57,47 @@ router.get("/trade/view/:id",helper.ensureAuthenticated , async (req, res, next)
   res.render('home', {page:'trade/editor', trade:produ,user:"1546"});
 });
 router.post("/trade/view/:id",helper.ensureAuthenticated , async (req, res, next) => {
-  console.log(req.body);
-  if(req.body.action = 'update'){
-    const produ = await CtrlData.findbyidTrade(req.params.id);
+  console.log(req.body.action);
+  if(req.body.action == 'update'){
+    var traOb = {};
+    traOb.baStaff = req.body.addbaStaff;
+    traOb.baCus = req.body.addbaCus;
+    traOb.product = [];
+    for (k in req.body) {
+      if (req.body.hasOwnProperty(k)) {
+          if (k.includes("pro")) {
+            var prodb = {};
+            prodb.name = req.body[k][0];
+            prodb.sol = req.body[k][1];
+            prodb.price = req.body[k][2];
+            prodb.other = req.body[k][3];
+            console.log(prodb); 
+            traOb.product.push(prodb);
+        };
+      }};
+    traOb.docDoc = req.body.adddocDoc;
+    traOb.docStart = req.body.adddocStart;
+    traOb.docEnd = req.body.adddocEnd;
+    traOb.docAddress = req.body.adddocAddress;
+    traOb.tranPrice = req.body.addtranPrice;
+    traOb.tranTime = req.body.addtranTime;
+    traOb.tranBrand = req.body.addtranBrand;
+    traOb.tranAddress = req.body.addtranAddress;
+    traOb.careChanel = req.body.addcareChanel;
+    traOb.careRecord = req.body.addcareRecord;
+    traOb.careCall = req.body.addcareCall;
+    traOb.careCreate = req.body.addcareCreate;
+    traOb.careAdress = req.body.addcareAdress;
+    console.log(traOb);
+    var docs = await CtrlData.findByIdAndUpdateTrade(req.params.id,traOb);
+    res.render('home', {page:'trade/editor', trade:docs});
   }
-  res.render('home', {page:'trade/editor', trade:produ,user:"1546"});
+  if(req.body.action == 'delete'){
+     CtrlData.findByIdAndDeleteTrade(req.params.id);
+    console.log("xóa thành công");
+    res.redirect("list.php");
+  }
+  res.send('Lỗi không xác định đc');
+  
 })
 module.exports = router;
