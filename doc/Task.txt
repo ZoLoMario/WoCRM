@@ -249,3 +249,10 @@ habitica-developcd game trên website cd
 - Trường dữ liệu tên của khách hàng không thể trống
 - Một só giá trị dữ liệu cần phải có yêu cầu
 - API gửi để lấy danh sách khách hàng không chạy
+
+30.06.2021
+- Tạo dữ liệu mẫu sử dụng cho lần sau
+- Phần mô tả của sản phẩm không đúng loại
+- Loại dữ liệu định dạng trong phần Nhân viên như thông tin về trình độ không đúng loại
+- Tên và ID bị trùng nhau gây nhập dữ liệu khó hơn
+- Cập nhật giao dịch không có tên và id khách hàng để gửi khi load lại không có

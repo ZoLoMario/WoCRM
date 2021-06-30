@@ -455,7 +455,7 @@ router.get("/staff/view/:id",helper.ensureAuthenticated , async (req, res, next)
   const produ = await CtrlData.findbyidStaff(req.params.id);
   res.render('home', {page:'staff/editor', produ:produ,user:"1546"});
 });
-router.post("/product/view/:id",helper.ensureAuthenticated , async (req, res, next) => {
+router.post("/staff/view/:id",helper.ensureAuthenticated , async (req, res, next) => {
   const produ = await CtrlData.findbyidStaff(req.params.id);
   if(req.body.action == 'delete') {
 
