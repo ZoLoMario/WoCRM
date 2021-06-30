@@ -240,8 +240,8 @@
         <input name="addcareAdress" type="text" class="form-control" value="<%= trade.careAdress %>"  id="brand" placeholder="">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary"  action="update" style="float: right;">Cập nhật</button>
-    <button type="submit" class="btn btn-danger" action="delete">Xóa</button>
+    <button type="submit" class="btn btn-primary"  name="action" value="update" style="float: right;">Cập nhật</button>
+    <button type="submit" class="btn btn-danger" name="action" value="delete">Xóa</button>
   </form>
   <script>
     dataautocomplete(document.getElementById("addbaCust"), "/api/custom/list.html") ;

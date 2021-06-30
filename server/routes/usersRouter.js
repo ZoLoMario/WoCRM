@@ -46,7 +46,7 @@ router.post("/trade/add.php",helper.ensureAuthenticated , async (req, res, next)
     console.log("123 " + result);
   res.render('home',{page:'trade/add'});
 });
-router.get("/trade/filter.php",helper.ensureAuthenticated , async (req, res, next) =>{
+router.get("/trade/list.php",helper.ensureAuthenticated , async (req, res, next) =>{
   var list = await CtrlData.listTrade();
   console.log(list[0]);
   res.render('home', {page: 'trade/list', excelData : list});
@@ -57,7 +57,7 @@ router.get("/trade/view/:id",helper.ensureAuthenticated , async (req, res, next)
   res.render('home', {page:'trade/editor', trade:produ,user:"1546"});
 });
 router.post("/trade/view/:id",helper.ensureAuthenticated , async (req, res, next) => {
-  console.log(req.body.action);
+  //console.log(req.body.action);
   if(req.body.action == 'update'){
     var traOb = {};
     traOb.baStaff = req.body.addbaStaff;
@@ -88,16 +88,19 @@ router.post("/trade/view/:id",helper.ensureAuthenticated , async (req, res, next
     traOb.careCall = req.body.addcareCall;
     traOb.careCreate = req.body.addcareCreate;
     traOb.careAdress = req.body.addcareAdress;
-    console.log(traOb);
+    //console.log(traOb);
     var docs = await CtrlData.findByIdAndUpdateTrade(req.params.id,traOb);
     res.render('home', {page:'trade/editor', trade:docs});
-  }
+  } else {
   if(req.body.action == 'delete'){
-     CtrlData.findByIdAndDeleteTrade(req.params.id);
+    await CtrlData.findByIdAndDeleteTrade(req.params.id);
     console.log("xóa thành công");
-    res.redirect("list.php");
-  }
-  res.send('Lỗi không xác định đc');
-  
-})
+    res.redirect("/trade/list.php");
+  } else {
+    res.send("Lỗi không xác định");
+  }};
+});
+router.get("/trade/baogiacreate.php",helper.ensureAuthenticated , async (req, res, next) =>{
+  res.render('home', {page:'trade/baogia'});
+});
 module.exports = router;

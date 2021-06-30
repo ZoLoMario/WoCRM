@@ -235,7 +235,7 @@ habitica-developcd game trên website cd
 
 27.06.2021
 - Làm phần báo giá trong giao dịch
-- Xem, sửa các giao dịch
+///- Xem, sửa các giao dịch
 - Di chuyển về đúng link sao khi đang nhập
 - phần cài đặt và điền báo giá tạo mẫu có sẵn khi giao dịch
 
